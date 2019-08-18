@@ -1,0 +1,1 @@
+<view class="custom_null-data"><image class="nullBg" style="{{'margin-top:'+(marginTop+'upx')+';'}}" mode="widthFix" src="/static/images/nullDataBg.png"></image><view class="tipsText">{{tipsText}}</view></view>

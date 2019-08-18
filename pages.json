@@ -1,0 +1,24 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "uni-app",
+				"app-plus" : {
+				"bounce" : "none" // 取消iOS回弹,避免和下拉刷新冲突 (小程序无法取消, 点此查看H5端的取消方法... )
+			}
+			}
+		}
+	    ,{
+            "path" : "pages/authority/authority",
+            "style" : {}
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "世纪祭祀",
+		"navigationBarBackgroundColor": "#789eeb",
+		"backgroundColor": "#F8F8F8",
+		"navigationStyle": "custom"
+	}
+}

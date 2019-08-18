@@ -1,0 +1,134 @@
+
+.section {
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	width: 100%;
+	border-bottom: 1px solid #e5e5e5;
+	padding: 30rpx 0;
+	overflow: hidden;
+	position: relative;
+}
+.leftImg {
+	width: 150rpx;
+	height: 150rpx;
+	overflow: hidden;
+	float: left;
+	background-color: #e7e7e7;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
+	position: relative;
+}
+.leftImg image {
+	width: 150rpx;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	    -ms-transform: translateY(-50%);
+	        transform: translateY(-50%);
+}
+.rightInfo {
+	width: 520rpx;
+	float: right;
+	height: 150rpx;
+	overflow: visible;
+}
+.title {
+	font-size: 28rpx;
+	height: 50rpx;
+	line-height: 50rpx;
+	color: #000;
+}
+.details {
+	font-size: 24rpx;
+	height: 40rpx;
+	line-height: 40rpx;
+	color: #333;
+	overflow: hidden;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.tel,
+.address {
+	height: 30rpx;
+	line-height: 30rpx;
+	font-size: 22rpx;
+	color: #999;
+	width: 100%;
+	overflow: hidden;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.address {
+	clear: both;
+}
+.tel image,
+.address image {
+	width: 18rpx;
+	height: 25rpx;
+	float: left;
+	margin: 2rpx 15rpx 5rpx 0;
+}
+.stars{
+  width:150rpx;
+  height: 22rpx;
+  position: absolute;
+  top:40rpx;
+  right: 30rpx;
+  text-align: right;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: hidden;
+}
+/* .stars image{
+  width:22rpx;
+  height: 22rpx;
+  margin-left:10rpx;
+  float:right;
+}
+.stars image:last-child{
+  margin-right:0;
+} */
+.location {
+	width: 300rpx;
+	height: 80rpx;
+	line-height: 80rpx;
+	margin-top: 40rpx;
+	font-size: 28rpx;
+	color: #fff;
+	float: left;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 9999999;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.location image {
+	width: 25rpx;
+	height: 33rpx;
+	margin: 24rpx 10rpx 23rpx 30rpx;
+	float: left;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.openDjs {
+	width: 102rpx;
+	height: 30rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	display: inline-block;
+	clear: both;
+	margin-left: 5rpx;
+	overflow: visible;
+	position: relative;
+}
+.openDjs image {
+	width: 102rpx;
+	height: 48rpx;
+	position: absolute;
+	left: 0;
+	top: -12rpx;
+}
+

@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "uni-app",
+  "usingComponents": {
+    "uni-nav-bar": "/components/uni-nav-bar/uni-nav-bar",
+    "cemetery-info": "/components/cemeteryInfo",
+    "mescroll-uni": "/components/mescroll-uni/mescroll-uni",
+    "null-data": "/components/nullData",
+    "mpvue-picker": "/components/mpvue-picker/mpvuePicker"
+  }
+}
