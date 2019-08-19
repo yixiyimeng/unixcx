@@ -1,0 +1,144 @@
+.loginbox {
+	padding: 0 75upx;
+}
+
+.loginbox .topnav {
+	height: 44px;
+	line-height: 44px;
+	padding-top: 15px;
+	background: #fff;
+	position: fixed;
+	padding-left: 77upx;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+.loginbox .close image {
+	display: block;
+	width: 15px;
+}
+
+.loginbox .title {
+	margin-top: 150upx;
+	font-size: 66upx;
+	color: #475bbc;
+	font-weight: bold;
+	line-height: 1;
+}
+
+.loginbox .subtitle {
+	color: #666;
+	font-size: 28upx;
+	margin-top: 20upx;
+}
+
+.loginbox .subtitle uni-navigator {
+	display: inline-block;
+	color: #475bbc;
+}
+
+.loginbox .from-group {
+	margin-top: 90upx;
+}
+
+.loginbox .from-group .from-row+.from-row {
+	margin-top: 50upx;
+}
+
+.loginbox .from-group .from-row label {
+	color: rgba(0, 0, 0, 0.6);
+	font-size: 20upx;
+	margin-bottom: 10upx;
+}
+
+.loginbox .from-group .from-row>div {
+	
+	font-size: 28upx;
+}
+
+.loginbox .from-group .from-row .from-input {
+	border-bottom: 1px solid rgba(178, 178, 178, 0.6);
+padding: 10upx 0;
+}
+
+.loginbox .from-group .from-row>div .num {
+	color: rgba(0, 0, 0, 0.6);
+	padding-right: 20upx;
+	border-right: 1px solid rgba(178, 178, 178, 0.6);
+	margin-right: 20upx;
+}
+
+.loginbox .from-group .from-row .icon {
+	display: block;
+	height: 30upx;
+	width: 38upx;
+	margin-right: 28upx;
+}
+
+.loginbox .from-group .from-row .icon.clear {
+	background: url(../../static/images/loginclose.png) no-repeat center center;
+	background-size: contain;
+}
+
+.loginbox .from-group .from-row .icon.eye {
+	background: url(../../static/images/eye2.png) no-repeat center center;
+	background-size: contain;
+}
+.loginbox .from-group .from-row .icon.eye.open {
+	background-image: url(../../static/images/eye1.png) ;
+}
+
+.loginbox .link uni-navigator {
+	font-size: 24upx;
+	color: #475bbc;
+	margin-top: 30upx;
+}
+
+.loginbox .getcode,
+.loginbox .loginbtn {
+	color: #fff;
+	background: #475bbc;
+	text-align: center;
+	border-radius: 50upx;
+}
+
+.loginbox .getcode {
+	font-size: 24upx;
+	line-height: 60upx;
+	width: 174upx;
+	display: block;
+	margin-left: 30upx;
+}
+
+.loginbox .loginbtn {
+	width: 600upx;
+	line-height: 88upx;
+	font-size: 32upx;
+	margin-top: 60upx;
+}
+
+.loginbox .other {
+	color: rgba(0, 0, 0, 0.3);
+	font-size: 24upx;
+	margin-top: 70upx;
+}
+
+.loginbox .other .otherlink uni-navigator {
+	margin: 40upx 35upx 0 0;
+	width: 88upx;
+	height: 88upx;
+	display: inline-block;
+}
+
+.loginbox .other .otherlink image {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.loginbox .tip {
+	font-size: 22upx;
+	color: rgba(0, 0, 0, 0.3);
+	margin-top: 100upx;
+}

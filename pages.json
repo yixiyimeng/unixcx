@@ -21,6 +21,18 @@
             "path" : "pages/sjjsAbout/news/index",
             "style" : {}
         }
+        ,{
+            "path" : "pages/login/login",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/reg/reg",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/setPwd/setPwd",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
