@@ -1,5 +1,5 @@
 <template>
-	<navigator open-type="redirect" class="section" @click="cemeteryInfo" hover-class="none" :url="`/pages/cemetery/index?id=${CemeteryItem.Id}`" :id="CemeteryItem.Id">
+	<navigator open-type="redirect" class="section" @click="cemeteryInfo" hover-class="none" :url="`/pages/cemetery/index?id=${cemeteryItem.Id}`" :id="cemeteryItem.Id">
 		<view class="leftImg"><image mode="widthFix" :src="cemeteryItem.img" /></view>
 		<view class="rightInfo">
 			<view class="title">

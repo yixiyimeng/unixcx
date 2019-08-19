@@ -23,7 +23,12 @@
 							<view class="getcode" v-if="timeDown">{{ timeDown }}s</view>
 							<view class="getcode" v-else @click="getCode">获取验证码</view>
 						</view>
+						<!-- #ifndef H5 -->
 						<button @click="updateBut" class="cu-btn lg">绑定</button>
+						<!-- #endif -->
+						<!-- #ifdef H5 -->
+						<button @click="quickLogin" class="cu-btn lg">快速登陆</button>
+						<!-- #endif -->
 					</view>
 				</view>
 			</uni-popup>
@@ -80,7 +85,7 @@ export default {
 										obj.province = infoRes.userInfo.province;
 										obj.openid = infoRes.userInfo.openId;
 										obj.unionid = infoRes.userInfo.unionId;
-										
+
 										uni.setStorageSync('userInfo', obj); //存储openid
 										that.useradd(obj);
 									}
@@ -148,7 +153,7 @@ export default {
 					if (res.data.Code == 0) {
 						(that.timeDown = ''), (that.yzmCode = ''), (that.telNumber = '');
 						uni.removeStorageSync('telYzmCode');
- 						uni.removeStorageSync('telYzmCodeTime');
+						uni.removeStorageSync('telYzmCodeTime');
 						uni.removeStorageSync('telYzmCodeTel');
 						clearInterval(that.setInter);
 
@@ -165,8 +170,50 @@ export default {
 				}
 			});
 		},
-		/* 手机注册 */
-		
+		/* 手机注册登陆 */
+		quickLogin() {
+			var that = this;
+			uni.setStorageSync('Token', 'e18d349cc16641eaf05bc59c0c76ccdd');
+			var obj = {
+				avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIF6yedM3OzWhBATl9JicZeiaDSBNicSx7edBOcC7QB9UrqMFU5thibJMeVM3AibUpFqqgPeTP8FczMYrg/132',
+				city: '',
+				country: 'China',
+				gender: 1,
+				language: 'zh_CN',
+				nickName: '未满',
+				province: '',
+				openid: 'onSzc4nPwCiBLa9swXh7WAnO3yRQ'
+			};
+			uni.setStorageSync('userInfo', obj);
+			// 			network.POST({
+			// 				url: 'QuickLogin',
+			// 				params: { Mobile: that.telNumber,  Code: that.yzmCode },
+			// 				success: function(res) {
+			// 					if (res.data.Code == 0) {
+			// 						(that.timeDown = ''), (that.yzmCode = ''), (that.telNumber = '');
+			// 						uni.removeStorageSync('telYzmCode');
+			// 						uni.removeStorageSync('telYzmCodeTime');
+			// 						uni.removeStorageSync('telYzmCodeTel');
+			// 						clearInterval(that.setInter);
+			//
+			// 						uni.showToast({
+			// 							title: '登陆成功',
+			// 							icon: 'success'
+			// 						});
+			// 						uni.setStorageSync('Token', res.data.Token);
+			// 						var obj = {};
+			// 						obj.avatarUrl = res.data.Headimgurl;
+			// 						obj.nickName =  res.data.NickName;
+			// 						uni.setStorageSync('userInfo', obj);
+			// 						that.goback();
+			// 					}
+			// 				},
+			// 				fail: function() {},
+			// 				complete: function() {
+			// 					uni.hideLoading();
+			// 				}
+			// 			});
+		},
 		useradd: function(obj) {
 			console.log(obj);
 			var that = this;

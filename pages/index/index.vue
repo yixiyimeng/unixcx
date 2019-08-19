@@ -13,14 +13,14 @@
 		</uni-nav-bar>
 		<!-- search -->
 
-		<view class="searchWrap">
+		<view class="searchWrap" :style="{top:(statusBarHeight+44)+'px'}">
 			<navigator hover-class="none" url="/pages/sjjsAbout/searchResult" class="searchBox">
 				<image src="/static/images/searchHui.png" />
 				输入关键字搜索
 			</navigator>
 		</view>
 		<div :style="{ height: scrollhight + 'px', top: offsetTop + 'px' }" class="wrap">
-			<mescroll-uni :down="downOption" :up="upOption" @down="downCallback" @up="upCallback" :fixed="false" @init="mescrollInit" >
+			<mescroll-uni :down="downOption" :up="upOption" @down="downCallback" @up="upCallback" :fixed="false" @init="mescrollInit">
 				<!-- swiper -->
 				<view class="swiper">
 					<swiper
@@ -33,9 +33,11 @@
 						indicator-color="#fff"
 						circular="true"
 					>
-						<navigator hover-class="none" v-for="(item, index) in HomeData.Banner" :key="index" :url="item.url">
-							<swiper-item><image :src="item.Img" class="slide-image" /></swiper-item>
-						</navigator>
+						<swiper-item>
+							<navigator hover-class="none" v-for="(item, index) in HomeData.Banner" :key="index" :url="item.url">
+								<image :src="item.Img" class="slide-image" />
+							</navigator>
+						</swiper-item>
 					</swiper>
 				</view>
 				<!-- 菜单 -->
@@ -66,7 +68,12 @@
 					</view>
 				</view>
 				<!-- 推荐新闻 -->
-				<navigator class="newsBox" :url="`/pages/sjjsAbout/news/details?id=${HomeData.ImgNews[0].Id}`" hover-class="none" v-if="HomeData.ImgNews.length > 0">
+				<navigator
+					class="newsBox"
+					:url="`/pages/sjjsAbout/news/details?id=${HomeData.ImgNews[0].Id}`"
+					hover-class="none"
+					v-if="HomeData.ImgNews && HomeData.ImgNews.length > 0"
+				>
 					<view class="left_img"><image mode="widthFix" :src="HomeData.ImgNews[0].Img" /></view>
 					<view class="newsRightInfo">
 						<view class="news-title">{{ HomeData.ImgNews[0].Title }}</view>
@@ -87,9 +94,16 @@
 				<div class="list"><cemetery-info :cemetery-item="item" v-for="(item, index) in cemetery_list" :key="index"></cemetery-info></div>
 			</mescroll-uni>
 		</div>
-		<mpvue-picker :themeColor="themeColor" ref="mpvuePicker" :mode="mode" :deepLength="deepLength" :pickerValueDefault="pickerValueDefault"
-		 @onConfirm="onConfirm" @onCancel="onCancel" :pickerValueArray="pickerValueArray"></mpvue-picker>
-		
+		<mpvue-picker
+			:themeColor="themeColor"
+			ref="mpvuePicker"
+			:mode="mode"
+			:deepLength="deepLength"
+			:pickerValueDefault="pickerValueDefault"
+			@onConfirm="onConfirm"
+			@onCancel="onCancel"
+			:pickerValueArray="pickerValueArray"
+		></mpvue-picker>
 	</view>
 </template>
 
@@ -130,13 +144,12 @@ export default {
 			dataList: [],
 			offsetTop: 0,
 			themeColor: '#007AFF',
-			pickerValueDefault:[0,0],
-			pickerValueArray:cityData,
-			mode:'multiLinkageSelector',
-			deepLength:2,
-			mescroll:null
-			
-		};
+			pickerValueDefault: [0, 0],
+			pickerValueArray: cityData,
+			mode: 'multiLinkageSelector',
+			deepLength: 2,
+			mescroll: null,
+					statusBarHeight:0};
 	},
 	components: {
 		uniNavBar,
@@ -147,10 +160,10 @@ export default {
 	},
 	onLoad() {
 		let that = this;
-		var statusBarHeight = uni.getSystemInfoSync().statusBarHeight;
+		that.statusBarHeight = uni.getSystemInfoSync().statusBarHeight;
 		uni.getSystemInfo({
 			success: function(res) {
-				that.offsetTop = (res.windowWidth * 100) / 750 + 44 + statusBarHeight;
+				that.offsetTop = (res.windowWidth * 100) / 750 + 44 + that.statusBarHeight;
 				that.scrollhight = res.windowHeight - that.offsetTop;
 			}
 		});
@@ -182,10 +195,10 @@ export default {
 		switchCity() {
 			/* 切换城市 */
 			this.pickerValueArray = cityData;
-			this.mode = 'multiLinkageSelector'
-			this.deepLength = 2
-			this.pickerValueDefault = [0, 0]
-			this.$refs.mpvuePicker.show()
+			this.mode = 'multiLinkageSelector';
+			this.deepLength = 2;
+			this.pickerValueDefault = [0, 0];
+			this.$refs.mpvuePicker.show();
 		},
 		// 请求首页数据
 		GetHomeData: function() {
@@ -227,11 +240,11 @@ export default {
 				res => {
 					console.log(res.data);
 					var list = [];
-					if (res.data.List&&res.data.List.length > 0) {
+					if (res.data.List && res.data.List.length > 0) {
 						list = res.data.List;
 					}
 					//联网成功的回调
-					successCallback && successCallback(list,res.data.Total);
+					successCallback && successCallback(list, res.data.Total);
 				},
 				() => {
 					errorCallback && errorCallback();
@@ -277,41 +290,38 @@ export default {
 		},
 		onConfirm(e) {
 			console.log(e);
-			this.currentCityCode=e.value[1];
-			this.provinceName=e.label.split('-')[0];
-			this.cityName=e.label.split('-')[1];
-			uni.setStorageSync('addressData', { 'provinceNmae': this.provinceName, 'provinceCode': e.value[0], 'cityName': this.cityName, 'cityCode': this.currentCityCode, });
-			this.cemetery_list=[];
-			this.mescroll.scrollTo(0,100);
-			this.mescroll.resetUpScroll(false)
+			this.currentCityCode = e.value[1];
+			this.provinceName = e.label.split('-')[0];
+			this.cityName = e.label.split('-')[1];
+			uni.setStorageSync('addressData', { provinceNmae: this.provinceName, provinceCode: e.value[0], cityName: this.cityName, cityCode: this.currentCityCode });
+			this.cemetery_list = [];
+			this.mescroll.scrollTo(0, 100);
+			this.mescroll.resetUpScroll(false);
 		},
 		mescrollInit(mescroll) {
 			this.mescroll = mescroll;
-			
 		},
 		//获取省市信息
-  getCityInfo:function(){
-    // 判断是否有本地存储，如果有，则使用本地存储，如果没有则通过接口获取
-    var cityArea_data = uni.getStorageSync('cityArea');
-    if (cityArea_data) {
-      // this.setData({
-      //   'areaData': cityArea_data,
-      //   citys: cityArea_data[0].cities
-      // });
-      return;
-    }
-    var data = {
-      level: 2
-    };
-    postData(data,'GetAreaDataList', res => {
-      // this.setData({
-      //   areaData: res.data.Data,
-      // });
-      uni.setStorageSync('cityArea', res.data.Data);
-    })
-   
-  },
-  
+		getCityInfo: function() {
+			// 判断是否有本地存储，如果有，则使用本地存储，如果没有则通过接口获取
+			var cityArea_data = uni.getStorageSync('cityArea');
+			if (cityArea_data) {
+				// this.setData({
+				//   'areaData': cityArea_data,
+				//   citys: cityArea_data[0].cities
+				// });
+				return;
+			}
+			var data = {
+				level: 2
+			};
+			postData(data, 'GetAreaDataList', res => {
+				// this.setData({
+				//   areaData: res.data.Data,
+				// });
+				uni.setStorageSync('cityArea', res.data.Data);
+			});
+		}
 	}
 };
 </script>
@@ -327,6 +337,7 @@ page {
 	color: #fff;
 	min-width: 300upx;
 	display: block;
+	line-height: 44px;
 }
 .location image {
 	width: 25upx;
@@ -394,7 +405,8 @@ page {
 	border-radius: 10upx;
 	overflow: hidden;
 }
-.swiper image {
+
+.swiper uni-navigator,.swiper image {
 	width: 100%;
 	height: 100%;
 	display: block;
