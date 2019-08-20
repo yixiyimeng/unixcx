@@ -7,7 +7,7 @@
 		<div class="title">登录</div>
 		<p class="subtitle">
 			还没有账号，请
-			<navigator url="">注册</navigator>
+			<navigator url=""  hover-class="none">注册</navigator>
 		</p>
 		<div class="from-group">
 			<div class="from-row">
@@ -25,7 +25,7 @@
 					<i class="icon eye" @click="showpwd = !showpwd" :class="{ open: showpwd }"></i>
 				</div>
 			</div>
-			<div class="link"><navigator url="">忘记密码</navigator></div>
+			<div class="link"><navigator url=""  hover-class="none">忘记密码</navigator></div>
 			<div class="loginbtn">登录</div>
 			<div class="other">
 				<div>其他登录方式</div>
